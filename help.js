@@ -31,11 +31,11 @@ const createVariant = function *({ desc: description, name, number }, names, rea
 	yield e(`git checkout -b variant-${number}`);
 
 	yield fs.writeFile('index.html', index
-		.replace(/{{{VAR}}}/ig, number.toString)
+		.replace(/{{{VAR}}}/ig, number.toString())
 		.replace(/{{{NAME}}}/ig, name),
 	);
 	yield fs.writeFile('README.md', readme
-		.replace(/{{{VAR}}}/ig, number.toString)
+		.replace(/{{{VAR}}}/ig, number.toString())
 		.replace('{{{TASK}}}', description),
 	);
 
