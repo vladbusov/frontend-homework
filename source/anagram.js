@@ -1,38 +1,36 @@
 'use strict';
 
-function unique(arr) {
-  var obj = {}; /* kortej dlya hraneniya slow */
-
-  for (var i = 0; i < arr.length; i++) { // perebor
-    var str = arr[i]; // berem slowo
-    obj[str] = true; // sozdanie stroki kak svoystwo ob'ecta
-  }
-
-  return Object.keys(obj); // perebor klyuchey
+const unique = arr => {
+	let map = new Map();
+	let output = new Array();
+	arr.forEach(function(item, i, array) { 
+		if (!map.has(item)) { 
+			map.set(item, true); 
+			output.push(item); 
+		} 
+	});
+	return output;
 }
 
-function anagram(input){
-	// dwa massiva - odin dlya otweta, drugoy dlya anagramm
-	var anagrams = {};
-	var output = [];
 
-	for (var i in input) {
-		var word = input[i];
-		// poluchaem slowo
+const anagram = input => {
+	let anagrams = new Map();
+	input.forEach( function(word, i, array) {
 		word = word.toLowerCase();
-		// preobrazuem v nijniy register / razbivaem po simvolam / sortiruem simvoli po alfavitu
 		var sorted = word.split("").sort().join();
-		// soedinyaem obratno v stroku
-		if (anagrams[sorted] != null) anagrams[sorted].push(word); 
-		// esly v massive est kluch - dobavlyaem slowo
-		else anagrams[sorted] = [ word ]; // esly net, to sozdaem massiv
-	}
+		if (anagrams[sorted] != null) { 
+			anagrams[sorted].push(word) 
+		} else { 
+			anagrams[sorted] = [ word ];
+		}; 
+	});
 
-	for (var angm in anagrams){
-		anagrams[angm] = unique(anagrams[angm]); // ubiraem is massiva odinakowie slowa
-		if ( anagrams[angm].length > 1 ){ // elsli slov v massive bolshe 1
-			output.push( anagrams[angm].sort() ); // dobavlyaem otsortirovanniy massiv v otwet
+	let output = new Array();
+	for (let group of Object.values(anagrams) ){
+		group = unique(group);
+		if ( group.length > 1 ){ 
+			output.push( group.sort() ); 
 		}
 	}
-	return output.sort(); // sortiruem i vozvrashaem otwet
+	return output.sort(); 
 };
