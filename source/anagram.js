@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * ѕолучени€ массив уникальных слов из произвольного массива слов
+ * @param   {string[]} arr
+ * @returns {string[]}
+ */
+
 const unique = arr => {
 	let map = new Map();
 	let output = new Array();
@@ -12,6 +18,11 @@ const unique = arr => {
 	return output;
 }
 
+/**
+ * ѕолучени€ двумерный массив анаграмм из произвольного массива слов
+ * @param   {string[]} input
+ * @returns {Array<[string, string]>}
+ */
 
 const anagram = input => {
 	let anagrams = new Map();
@@ -19,7 +30,7 @@ const anagram = input => {
 		word = word.toLowerCase();
 		var sorted = word.split("").sort().join();
 		if (anagrams[sorted] != null) { 
-			anagrams[sorted].push(word) 
+			anagrams[sorted].push(word);
 		} else { 
 			anagrams[sorted] = [ word ];
 		}; 
