@@ -12,9 +12,7 @@ const anagram = input => {
 		var sorted = word.split("").sort().join();
 
 		if (anagrams.has(sorted)) {
-			let list = anagrams.get(sorted);
-			list.push(word);
-			anagrams.set(sorted,list);
+			anagrams.get(sorted).push(word);
 		} else { 
 			anagrams.set(sorted, new Array(word) );
 		}; 
