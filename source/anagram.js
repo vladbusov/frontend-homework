@@ -8,7 +8,7 @@
 const anagram = input => {
 	const anagrams = new Map();
 	input.forEach(word => {
-		let sorted = word.toLowerCase().split('').sort().join();
+		const sorted = word.toLowerCase().split('').sort().join();
 		if (anagrams.has(sorted)) {
 			anagrams.get(sorted).push(word);
 		} else { 
