@@ -84,7 +84,7 @@ QUnit.module('Тестируем функцию anagram', function () {
 
 		const output = [
 			  [
-				"атлант",
+				"Атлант",
 				"талант",
 				"тантал"
 			  ]
