@@ -38,4 +38,25 @@ QUnit.module('Тестируем функцию sort', function () {
 		assert.strictEqual(sort('i love frontend'), 'Defnnort Elov I');
 		assert.strictEqual(sort('hello world'), 'Dlorw Ehllo');
 	});
+
+	QUnit.test('Функция работает правильно с кириллицей и латинскими символами одновременно', function (assert) {
+		assert.strictEqual(sort('Все любят JavaScript'), 'Блтюя Вес Aacijprstv');
+		assert.strictEqual(sort('На stepic org мало курсов для JavaScript'), 'Алмо Ан Вкорсу Для Aacijprstv Ceipst Gor');
+		assert.strictEqual(sort('Завтра топать в универ на политологию'), 'Аавзрт Ан Аоптть В Веинру Гииллоооптю');
+		assert.strictEqual(sort('Интересно кто пойдет на политологию'), 'Ан Гииллоооптю Дейопт Ееиннорст Кот');
+		assert.strictEqual(sort('Никто не пойдет на политологию'), 'Ан Гииллоооптю Дейопт Ен Икнот');
+	});
+
+	QUnit.test('Функция умеет читать мысли и стрелять лазером из глаз', function (assert) {
+		assert.strictEqual(sort('Ночь улица фонарь аптека'), 'Ааекпт Аилуц Анорфь Ночь');
+		assert.strictEqual(sort('Бессмысленный и тусклый свет'), 'Беейлмннсссыы Вест И Йклстуы');
+		assert.strictEqual(sort('Живи еще хоть четверть века'), 'Авек Веерттчь Вжии Еещ Отхь');
+		assert.strictEqual(sort('Все будет так Исхода нет'), 'Адиосх Акт Бдету Вес Ент');
+		assert.strictEqual(sort('Умрешь начнешь опять сначала'), 'Ааалнсч Аеннчшь Емрушь Оптья');
+		assert.strictEqual(sort('И повторится все как встарь'), 'Аврсть Акк Вес Виоопрсття И');
+		assert.strictEqual(sort('Ночь ледяная рябь канала'), 'Аааклн Аделняя Брья Ночь');
+		assert.strictEqual(sort('Аптека улица фонарь'), 'Ааекпт Аилуц Анорфь');
+	});
+
+
 });
